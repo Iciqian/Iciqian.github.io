@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8"><!--规定html文档的字符编码-->
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JS闭包及应用 | Iciqian的博客</title>
+  <link rel="dns-prefetch" href="http://yoursite.com"><!--预解析,提高加载速度-->
+  <title>JS闭包及应用 | Iciqian的博客</title><!--title变量存在，title标签的内容是title变量，如果title变量不存在，则为配置文件的title值-->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="定义：闭包是有权访问另一函数作用域的变量的函数。常见创建闭包的方式：在一个函数内部创建另一个函数。123456function sayHi(str)&amp;#123; var hello = &quot;hello&quot;; return function()&amp;#123;        alert(hello+str);      &amp;#125;&amp;#125;
-理解执行环境和作用域链执行环境（execution conte">
+  <meta name="description" content="定义：闭包是有权访问另一函数作用域的变量的函数。常见创建闭包的方式：在一个函数内部创建另一个函数。123456function sayHi(str)&amp;#123; var hello = &quot;hello&quot;; return function()&amp;#123;        alert(hello+str);      &amp;#125;&amp;#125;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS闭包及应用">
 <meta property="og:url" content="http://yoursite.com/2017/02/28/js闭包/index.html">
 <meta property="og:site_name" content="Iciqian的博客">
-<meta property="og:description" content="定义：闭包是有权访问另一函数作用域的变量的函数。常见创建闭包的方式：在一个函数内部创建另一个函数。123456function sayHi(str)&amp;#123; var hello = &quot;hello&quot;; return function()&amp;#123;        alert(hello+str);      &amp;#125;&amp;#125;
-理解执行环境和作用域链执行环境（execution conte">
+<meta property="og:description" content="定义：闭包是有权访问另一函数作用域的变量的函数。常见创建闭包的方式：在一个函数内部创建另一个函数。123456function sayHi(str)&amp;#123; var hello = &quot;hello&quot;; return function()&amp;#123;        alert(hello+str);      &amp;#125;&amp;#125;">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw1024/006bAzaMjw1falvb7a9u8j30mr0csdhd.jpg">
-<meta property="og:updated_time" content="2016-12-10T10:25:14.000Z">
+<meta property="og:updated_time" content="2017-03-07T04:27:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS闭包及应用">
-<meta name="twitter:description" content="定义：闭包是有权访问另一函数作用域的变量的函数。常见创建闭包的方式：在一个函数内部创建另一个函数。123456function sayHi(str)&amp;#123; var hello = &quot;hello&quot;; return function()&amp;#123;        alert(hello+str);      &amp;#125;&amp;#125;
-理解执行环境和作用域链执行环境（execution conte">
+<meta name="twitter:description" content="定义：闭包是有权访问另一函数作用域的变量的函数。常见创建闭包的方式：在一个函数内部创建另一个函数。123456function sayHi(str)&amp;#123; var hello = &quot;hello&quot;; return function()&amp;#123;        alert(hello+str);      &amp;#125;&amp;#125;">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/mw1024/006bAzaMjw1falvb7a9u8j30mr0csdhd.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Iciqian的博客" type="application/atom+xml">
@@ -165,6 +162,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>定义：闭包是有权访问另一函数作用域的变量的函数。<br>常见创建闭包的方式：在一个函数内部创建另一个函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">str</span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> hello = <span class="string">"hello"</span>;</div><div class="line"> <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(hello+str);</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h2 id="理解执行环境和作用域链"><a href="#理解执行环境和作用域链" class="headerlink" title="理解执行环境和作用域链"></a>理解执行环境和作用域链</h2><h3 id="执行环境（execution-context）"><a href="#执行环境（execution-context）" class="headerlink" title="执行环境（execution context）"></a>执行环境（execution context）</h3><p>1.<strong>执行环境</strong>：定义了变量或函数有权访问的其他数据。<br>2.<strong>变量对象</strong>：每个执行环境都有一个与之关联的变量对象（variable object）,环境中定义的所有变量和函数都保存在这个对象里。<br>3.某个执行环境中的所有代码执行完毕后，该环境被销毁，保存在其中的所有变量和函数定义也随之销毁。<br>4.<strong>全局执行环境</strong>:全局执行环境是最外围的一个执行环境，根据ECMAScript实现所在的宿主环境不同，表示执行环境的对象也不一样。在Web浏览器中，全局执行环境被认为是window对象。全局执行环境直到应用程序退出才会被销毁。<br>5.<strong>每个函数都有自己的执行环境</strong>：当执行流进入到一个函数时，函数的环境就会被推入一个<strong>环境栈</strong>中，在函数执行之后，栈将环境弹出，把控制权返回给之前的执行环境。</p>
 <h3 id="作用域链（scope-chain）"><a href="#作用域链（scope-chain）" class="headerlink" title="作用域链（scope chain）"></a>作用域链（scope chain）</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><blockquote>
 <p>当代码在一个环境中执行时，会创建变量对象的一个作用域链。<br>作用域链保证对执行环境有权访问的所有变量和函数的有序访问。 </p>
@@ -220,9 +218,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2017/02/28/制作下拉菜单Tips/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          制作下拉菜单Tips&amp;相关知识点复习
+        
+      </div>
+    </a>
   
-    <a href="/2017/02/28/制作下拉菜单Tips/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">制作下拉菜单Tips&amp;相关知识点复习</div>
+  
+    <a href="/2017/02/28/面向对象的程序设计（1）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">面向对象的程序设计——创建对象</div>
       <i class="icon-circle-right"></i>
     </a>
   
