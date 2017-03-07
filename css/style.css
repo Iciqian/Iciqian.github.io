@@ -51,12 +51,19 @@ body {
   color: #368ccb;
   text-decoration: none;
 }
-.posts .post_content a {
+.posts .post_content a,
+.posts .post_more {
   color: #368ccb;
   text-decoration: none;
 }
+.posts .post_more {
+  color: #fff;
+  background-color: #000;
+  padding: 3px;
+}
 .posts .post_meta {
   color: #bababa;
+  margin-top: 1em;
 }
 .archive {
   margin: 1em auto;
