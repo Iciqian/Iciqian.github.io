@@ -2,23 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  
-  <title>Archives | Iciqian的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Iciqian的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
-<meta property="og:site_name" content="Iciqian的博客">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Iciqian的博客">
-  
-    <link rel="alternate" href="/atom.xml" title="Iciqian的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
+  <title>Iciqian的博客</title>
   <link rel="stylesheet" href="/css/style.css">
-  
 </head>
 
 <!--
@@ -35,112 +21,76 @@ open_graph:插入open_graph资源，open_graph([options]),用逗号连接。-->
 		<ul class="menu">
 			
 				<li class="menu_item">
-					<a href="/" class="menu_item_link">主页</a>
+					<a href="/" class="menu_item_link">Home</a>
 				</li>
 			
 				<li class="menu_item">
-					<a href="/archives" class="menu_item_link">归档</a>
+					<a href="/archives" class="menu_item_link">Archives</a>
 				</li>
 			
 		</ul>
 	</nav>
 </header>
 		<main class='main'>
-			<section class="posts"><!--文章区，文章包括可点击的标题、内容和文章建立时间-->
-	
-		<article class="post">
-			<div class="post_title">
-				<a class="post_title_link" href="/2017/02/28/制作下拉菜单Tips的副本 6/">制作下拉菜单Tips&amp;相关知识点复习</a>
-			</div>
-			<div class="post_content"><h2 id="制作多级菜单"><a href="#制作多级菜单" class="headerlink" title="制作多级菜单"></a>制作多级菜单</h2><p>在第一层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建二级菜单，在第二层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建三级菜单…以此类推。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   &lt;ul class=<span class="string">"top_nav"</span>&gt;          </div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;课程大厅&lt;/a&gt; &lt;!--一级菜单--&gt;</div><div class="line">		&lt;ul&gt;                  </div><div class="line">			&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;前端课程&lt;/a&gt; &lt;!--二级菜单--&gt;</div><div class="line">				&lt;ul&gt;          </div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;html&lt;/a&gt;&lt;/li&gt; &lt;!--三级菜单--&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;css&lt;/a&gt;&lt;/li&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;javascript&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;/ul&gt;</div><div class="line">			&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;学习中心&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;关于我们&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
-<p>对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。<br></div>
-			<div class="post_meta"><span class="post_time">2017-02-28</span></div>
-	</article>	
-	
-		<article class="post">
-			<div class="post_title">
-				<a class="post_title_link" href="/2017/02/28/js闭包/">JS闭包及应用</a>
-			</div>
-			<div class="post_content"><p>定义：闭包是有权访问另一函数作用域的变量的函数。<br>常见创建闭包的方式：在一个函数内部创建另一个函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">str</span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> hello = <span class="string">"hello"</span>;</div><div class="line"> <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(hello+str);</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p></div>
-			<div class="post_meta"><span class="post_time">2017-02-28</span></div>
-	</article>	
-	
-		<article class="post">
-			<div class="post_title">
-				<a class="post_title_link" href="/2017/02/28/制作下拉菜单Tips的副本 2/">制作下拉菜单Tips&amp;相关知识点复习</a>
-			</div>
-			<div class="post_content"><h2 id="制作多级菜单"><a href="#制作多级菜单" class="headerlink" title="制作多级菜单"></a>制作多级菜单</h2><p>在第一层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建二级菜单，在第二层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建三级菜单…以此类推。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   &lt;ul class=<span class="string">"top_nav"</span>&gt;          </div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;课程大厅&lt;/a&gt; &lt;!--一级菜单--&gt;</div><div class="line">		&lt;ul&gt;                  </div><div class="line">			&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;前端课程&lt;/a&gt; &lt;!--二级菜单--&gt;</div><div class="line">				&lt;ul&gt;          </div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;html&lt;/a&gt;&lt;/li&gt; &lt;!--三级菜单--&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;css&lt;/a&gt;&lt;/li&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;javascript&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;/ul&gt;</div><div class="line">			&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;学习中心&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;关于我们&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
-<p>对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。<br></div>
-			<div class="post_meta"><span class="post_time">2017-02-28</span></div>
-	</article>	
-	
-		<article class="post">
-			<div class="post_title">
-				<a class="post_title_link" href="/2017/02/28/制作下拉菜单Tips的副本 3/">制作下拉菜单Tips&amp;相关知识点复习</a>
-			</div>
-			<div class="post_content"><h2 id="制作多级菜单"><a href="#制作多级菜单" class="headerlink" title="制作多级菜单"></a>制作多级菜单</h2><p>在第一层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建二级菜单，在第二层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建三级菜单…以此类推。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   &lt;ul class=<span class="string">"top_nav"</span>&gt;          </div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;课程大厅&lt;/a&gt; &lt;!--一级菜单--&gt;</div><div class="line">		&lt;ul&gt;                  </div><div class="line">			&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;前端课程&lt;/a&gt; &lt;!--二级菜单--&gt;</div><div class="line">				&lt;ul&gt;          </div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;html&lt;/a&gt;&lt;/li&gt; &lt;!--三级菜单--&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;css&lt;/a&gt;&lt;/li&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;javascript&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;/ul&gt;</div><div class="line">			&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;学习中心&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;关于我们&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
-<p>对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。<br></div>
-			<div class="post_meta"><span class="post_time">2017-02-28</span></div>
-	</article>	
-	
-		<article class="post">
-			<div class="post_title">
-				<a class="post_title_link" href="/2017/02/28/制作下拉菜单Tips的副本 4/">制作下拉菜单Tips&amp;相关知识点复习</a>
-			</div>
-			<div class="post_content"><h2 id="制作多级菜单"><a href="#制作多级菜单" class="headerlink" title="制作多级菜单"></a>制作多级菜单</h2><p>在第一层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建二级菜单，在第二层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建三级菜单…以此类推。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   &lt;ul class=<span class="string">"top_nav"</span>&gt;          </div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;课程大厅&lt;/a&gt; &lt;!--一级菜单--&gt;</div><div class="line">		&lt;ul&gt;                  </div><div class="line">			&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;前端课程&lt;/a&gt; &lt;!--二级菜单--&gt;</div><div class="line">				&lt;ul&gt;          </div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;html&lt;/a&gt;&lt;/li&gt; &lt;!--三级菜单--&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;css&lt;/a&gt;&lt;/li&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;javascript&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;/ul&gt;</div><div class="line">			&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;学习中心&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;关于我们&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
-<p>对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。<br></div>
-			<div class="post_meta"><span class="post_time">2017-02-28</span></div>
-	</article>	
-	
-		<article class="post">
-			<div class="post_title">
-				<a class="post_title_link" href="/2017/02/28/制作下拉菜单Tips的副本 5/">制作下拉菜单Tips&amp;相关知识点复习</a>
-			</div>
-			<div class="post_content"><h2 id="制作多级菜单"><a href="#制作多级菜单" class="headerlink" title="制作多级菜单"></a>制作多级菜单</h2><p>在第一层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建二级菜单，在第二层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建三级菜单…以此类推。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   &lt;ul class=<span class="string">"top_nav"</span>&gt;          </div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;课程大厅&lt;/a&gt; &lt;!--一级菜单--&gt;</div><div class="line">		&lt;ul&gt;                  </div><div class="line">			&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;前端课程&lt;/a&gt; &lt;!--二级菜单--&gt;</div><div class="line">				&lt;ul&gt;          </div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;html&lt;/a&gt;&lt;/li&gt; &lt;!--三级菜单--&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;css&lt;/a&gt;&lt;/li&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;javascript&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;/ul&gt;</div><div class="line">			&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;学习中心&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;关于我们&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
-<p>对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。<br></div>
-			<div class="post_meta"><span class="post_time">2017-02-28</span></div>
-	</article>	
-	
-		<article class="post">
-			<div class="post_title">
-				<a class="post_title_link" href="/2017/02/28/制作下拉菜单Tips/">制作下拉菜单Tips&amp;相关知识点复习</a>
-			</div>
-			<div class="post_content"><h2 id="制作多级菜单"><a href="#制作多级菜单" class="headerlink" title="制作多级菜单"></a>制作多级菜单</h2><p>在第一层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建二级菜单，在第二层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建三级菜单…以此类推。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   &lt;ul class=<span class="string">"top_nav"</span>&gt;          </div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;课程大厅&lt;/a&gt; &lt;!--一级菜单--&gt;</div><div class="line">		&lt;ul&gt;                  </div><div class="line">			&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;前端课程&lt;/a&gt; &lt;!--二级菜单--&gt;</div><div class="line">				&lt;ul&gt;          </div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;html&lt;/a&gt;&lt;/li&gt; &lt;!--三级菜单--&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;css&lt;/a&gt;&lt;/li&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;javascript&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;/ul&gt;</div><div class="line">			&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;学习中心&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;关于我们&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
-<p>对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。<br></div>
-			<div class="post_meta"><span class="post_time">2017-02-28</span></div>
-	</article>	
-	
-		<article class="post">
-			<div class="post_title">
-				<a class="post_title_link" href="/2017/02/28/制作下拉菜单Tips的副本 7/">制作下拉菜单Tips&amp;相关知识点复习</a>
-			</div>
-			<div class="post_content"><h2 id="制作多级菜单"><a href="#制作多级菜单" class="headerlink" title="制作多级菜单"></a>制作多级菜单</h2><p>在第一层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建二级菜单，在第二层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建三级菜单…以此类推。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   &lt;ul class=<span class="string">"top_nav"</span>&gt;          </div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;课程大厅&lt;/a&gt; &lt;!--一级菜单--&gt;</div><div class="line">		&lt;ul&gt;                  </div><div class="line">			&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;前端课程&lt;/a&gt; &lt;!--二级菜单--&gt;</div><div class="line">				&lt;ul&gt;          </div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;html&lt;/a&gt;&lt;/li&gt; &lt;!--三级菜单--&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;css&lt;/a&gt;&lt;/li&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;javascript&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;/ul&gt;</div><div class="line">			&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;学习中心&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;关于我们&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
-<p>对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。<br></div>
-			<div class="post_meta"><span class="post_time">2017-02-28</span></div>
-	</article>	
-	
-		<article class="post">
-			<div class="post_title">
-				<a class="post_title_link" href="/2017/02/28/制作下拉菜单Tips的副本 8/">制作下拉菜单Tips&amp;相关知识点复习</a>
-			</div>
-			<div class="post_content"><h2 id="制作多级菜单"><a href="#制作多级菜单" class="headerlink" title="制作多级菜单"></a>制作多级菜单</h2><p>在第一层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建二级菜单，在第二层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建三级菜单…以此类推。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   &lt;ul class=<span class="string">"top_nav"</span>&gt;          </div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;课程大厅&lt;/a&gt; &lt;!--一级菜单--&gt;</div><div class="line">		&lt;ul&gt;                  </div><div class="line">			&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;前端课程&lt;/a&gt; &lt;!--二级菜单--&gt;</div><div class="line">				&lt;ul&gt;          </div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;html&lt;/a&gt;&lt;/li&gt; &lt;!--三级菜单--&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;css&lt;/a&gt;&lt;/li&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;javascript&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;/ul&gt;</div><div class="line">			&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;学习中心&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;关于我们&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
-<p>对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。<br></div>
-			<div class="post_meta"><span class="post_time">2017-02-28</span></div>
-	</article>	
-	
-		<article class="post">
-			<div class="post_title">
-				<a class="post_title_link" href="/2017/02/28/制作下拉菜单Tips的副本 9/">制作下拉菜单Tips&amp;相关知识点复习</a>
-			</div>
-			<div class="post_content"><h2 id="制作多级菜单"><a href="#制作多级菜单" class="headerlink" title="制作多级菜单"></a>制作多级菜单</h2><p>在第一层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建二级菜单，在第二层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建三级菜单…以此类推。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   &lt;ul class=<span class="string">"top_nav"</span>&gt;          </div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;课程大厅&lt;/a&gt; &lt;!--一级菜单--&gt;</div><div class="line">		&lt;ul&gt;                  </div><div class="line">			&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;前端课程&lt;/a&gt; &lt;!--二级菜单--&gt;</div><div class="line">				&lt;ul&gt;          </div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;html&lt;/a&gt;&lt;/li&gt; &lt;!--三级菜单--&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;css&lt;/a&gt;&lt;/li&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;javascript&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;/ul&gt;</div><div class="line">			&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;学习中心&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;关于我们&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
-<p>对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。<br></div>
-			<div class="post_meta"><span class="post_time">2017-02-28</span></div>
-	</article>	
-	
+			<section class="archive">
+	<ul class="post_archive">
+		
+			<li class="post_item">
+				<span class="post_date">2017-02-28</span>
+				<a class="post_title" href="/2017/02/28/制作下拉菜单Tips的副本 6/">制作下拉菜单Tips&amp;相关知识点复习</a>
+			</li>
+		
+			<li class="post_item">
+				<span class="post_date">2017-02-28</span>
+				<a class="post_title" href="/2017/02/28/js闭包/">JS闭包及应用</a>
+			</li>
+		
+			<li class="post_item">
+				<span class="post_date">2017-02-28</span>
+				<a class="post_title" href="/2017/02/28/制作下拉菜单Tips的副本 2/">制作下拉菜单Tips&amp;相关知识点复习</a>
+			</li>
+		
+			<li class="post_item">
+				<span class="post_date">2017-02-28</span>
+				<a class="post_title" href="/2017/02/28/制作下拉菜单Tips的副本 3/">制作下拉菜单Tips&amp;相关知识点复习</a>
+			</li>
+		
+			<li class="post_item">
+				<span class="post_date">2017-02-28</span>
+				<a class="post_title" href="/2017/02/28/制作下拉菜单Tips的副本 4/">制作下拉菜单Tips&amp;相关知识点复习</a>
+			</li>
+		
+			<li class="post_item">
+				<span class="post_date">2017-02-28</span>
+				<a class="post_title" href="/2017/02/28/制作下拉菜单Tips的副本 5/">制作下拉菜单Tips&amp;相关知识点复习</a>
+			</li>
+		
+			<li class="post_item">
+				<span class="post_date">2017-02-28</span>
+				<a class="post_title" href="/2017/02/28/制作下拉菜单Tips/">制作下拉菜单Tips&amp;相关知识点复习</a>
+			</li>
+		
+			<li class="post_item">
+				<span class="post_date">2017-02-28</span>
+				<a class="post_title" href="/2017/02/28/制作下拉菜单Tips的副本 7/">制作下拉菜单Tips&amp;相关知识点复习</a>
+			</li>
+		
+			<li class="post_item">
+				<span class="post_date">2017-02-28</span>
+				<a class="post_title" href="/2017/02/28/制作下拉菜单Tips的副本 8/">制作下拉菜单Tips&amp;相关知识点复习</a>
+			</li>
+		
+			<li class="post_item">
+				<span class="post_date">2017-02-28</span>
+				<a class="post_title" href="/2017/02/28/制作下拉菜单Tips的副本 9/">制作下拉菜单Tips&amp;相关知识点复习</a>
+			</li>
+		
+
+	</ul>
 </section>
 
 	<nav class="page_nav">
-		<span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">后一页&raquo;</a>
+		<span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next&raquo;</a>
 	</nav>
 
 <!--
@@ -151,21 +101,12 @@ paginator辅助函数：paginator(options)
 page.total:总页数
 
 
-<!--page.posts:获取文章
-page.post.each():
-post.path:获取文章路径（不包含根路径），通常用法为：url_for(post.path)
-post.title:获取文章标题
-post.content:获取文章的全部内容
-post.excerpt:获取文章的摘录部分，不过要在文章中添加more的注释，post.excerpt获取more标记之前的内容。
-date()函数：时间处理的辅助函数，用法date(date,[format])
-post.date:获取文章建立时间
 
-
-
--->
+<!--归档页一个archive section 里包含了一个列表，；列表里的每一项都包含了发布的日期和文章超链接，点击文章的标题，就能到文章的详情页。-->
 		</main>
 	</div>
 </body>
+</html>
 <!--
 partial:载入其他模版文件，可在locals设定区域变量，partial(layout,[locals],[options])
 [options]可设置参数：cache 缓存 默认值为false；only 限制局部变量，在模版中只能使用locals中设置的变量。
