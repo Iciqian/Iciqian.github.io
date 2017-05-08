@@ -34,7 +34,7 @@
     <link href="http://yoursite.com/2017/05/08/this%E7%9A%84%E6%8C%87%E5%90%91%E8%AF%A6%E8%A7%A3/"/>
     <id>http://yoursite.com/2017/05/08/this的指向详解/</id>
     <published>2017-05-08T01:14:56.000Z</published>
-    <updated>2017-05-08T04:47:58.000Z</updated>
+    <updated>2017-05-08T05:10:54.000Z</updated>
     
     <content type="html"><![CDATA[<p>在js中，每个函数在被调用时，会产生两个变量，this和arguments。这意味着，只有在函数调用之时，this的指向才能确定。</p>
 <p>this在运行时是根据执行环境绑定的，主要分为以下六种情况：<br>当包含this的函数：<br>1.作为普通的全局函数调用：在全局函数中，this指向window。<br>2.作为对象的方法调用：在函数被作为某个对象的方法调用时，this指向那个对象。<br>3.作为构造函数调用：当函数为构造函数，此时this指向实例出来的对象。<br>4.被apply,bind，call等改变执行环境时，this指向其他对象。<br>5.是匿名函数，this永远指向window（在不改变执行环境的情况下）。<br>6.其他情况。</p>
@@ -52,7 +52,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name=<span class="string">'w'</span>;</div><div class="line">var e = &#123;</div><div class="line">	name:<span class="string">'e'</span>,</div><div class="line">	getName:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		var that = this;</div><div class="line">		<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">			<span class="built_in">return</span> that.name;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">console.log(e.getName()());//<span class="string">'e'</span></div></pre></td></tr></table></figure>
 <h2 id="六、其他情况"><a href="#六、其他情况" class="headerlink" title="六、其他情况"></a>六、其他情况</h2><p>1.函数作为事件处理程序调用<br>DOM0级和DOM2级事件处理程序在元素的作用域中运行，this指向当前元素。<br>IE事件处理程序在全局作用域中运行，this指向window。<br>2.语法细微变化也可能意外的引起this值的改变。<br>如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var name=<span class="string">'w'</span>;</div><div class="line">var object=&#123;</div><div class="line">	name: <span class="string">'My Object'</span>;</div><div class="line">	getName: <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		retuen this.name;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">object.getName();//<span class="string">'My Object'</span></div><div class="line">(object.getName = object.getName)();//<span class="string">'w'</span></div></pre></td></tr></table></figure>
-<p>(object.getName = object.getName)();<br>相当于:<br>（function(){<br>    retuen this.name;<br>})();</p>
+<p>(object.getName = object.getName)();<br>相当于:<br>（function(){<br>    return this.name;<br>})();</p>
 ]]></content>
     
     <summary type="html">
@@ -75,7 +75,7 @@
     <link href="http://yoursite.com/2017/02/28/js%E9%97%AD%E5%8C%85/"/>
     <id>http://yoursite.com/2017/02/28/js闭包/</id>
     <published>2017-02-28T13:11:08.000Z</published>
-    <updated>2017-05-08T05:08:16.000Z</updated>
+    <updated>2017-05-08T05:09:18.000Z</updated>
     
     <content type="html"><![CDATA[<p>定义：闭包是有权访问另一函数作用域的变量的函数。<br>常见创建闭包的方式：在一个函数内部创建另一个函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">str</span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> hello = <span class="string">"hello"</span>;</div><div class="line"> <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(hello+str);</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -161,6 +161,20 @@
   </entry>
   
   <entry>
+    <title>面向对象的程序设计——继承</title>
+    <link href="http://yoursite.com/2017/02/28/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%882%EF%BC%89/"/>
+    <id>http://yoursite.com/2017/02/28/面向对象的程序设计（2）/</id>
+    <published>2017-02-28T13:11:08.000Z</published>
+    <updated>2016-12-04T14:07:40.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>面向对象的程序设计——创建对象</title>
     <link href="http://yoursite.com/2017/02/28/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%881%EF%BC%89/"/>
     <id>http://yoursite.com/2017/02/28/面向对象的程序设计（1）/</id>
@@ -173,20 +187,6 @@
     <summary type="html">
     
       &lt;p&gt;定义:hahahahhahahhahahhahahahahahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>面向对象的程序设计——继承</title>
-    <link href="http://yoursite.com/2017/02/28/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%882%EF%BC%89/"/>
-    <id>http://yoursite.com/2017/02/28/面向对象的程序设计（2）/</id>
-    <published>2017-02-28T13:11:08.000Z</published>
-    <updated>2016-12-04T14:07:40.000Z</updated>
-    
-    <summary type="html">
     
     </summary>
     
