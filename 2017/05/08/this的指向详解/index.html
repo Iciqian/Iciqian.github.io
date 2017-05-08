@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JS中this对象指向总结 | Iciqian的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在js中，每个函数在被调用时，会产生两个变量，this和arguments。这意味着，只有在函数调用之时，this的指向才能确定。
+this在运行时是根据执行环境绑定的，主要分为以下六种情况：当包含this的函数：1.作为普通的全局函数调用：在全局函数中，this指向window。2.作为对象的方法调用：在函数被作为某个对象的方法调用时，this指向那个对象。3.作为构造函数调用：当函数为构造函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS中this对象指向总结">
+<meta property="og:url" content="http://yoursite.com/2017/05/08/this的指向详解/index.html">
+<meta property="og:site_name" content="Iciqian的博客">
+<meta property="og:description" content="在js中，每个函数在被调用时，会产生两个变量，this和arguments。这意味着，只有在函数调用之时，this的指向才能确定。
+this在运行时是根据执行环境绑定的，主要分为以下六种情况：当包含this的函数：1.作为普通的全局函数调用：在全局函数中，this指向window。2.作为对象的方法调用：在函数被作为某个对象的方法调用时，this指向那个对象。3.作为构造函数调用：当函数为构造函数">
+<meta property="og:updated_time" content="2017-05-08T04:47:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS中this对象指向总结">
+<meta name="twitter:description" content="在js中，每个函数在被调用时，会产生两个变量，this和arguments。这意味着，只有在函数调用之时，this的指向才能确定。
+this在运行时是根据执行环境绑定的，主要分为以下六种情况：当包含this的函数：1.作为普通的全局函数调用：在全局函数中，this指向window。2.作为对象的方法调用：在函数被作为某个对象的方法调用时，this指向那个对象。3.作为构造函数调用：当函数为构造函数">
+  
+    <link rel="alternate" href="/atom.xml" title="Iciqian的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Iciqian的博客</a>
+      </h1>
+      
+    </div>
+
+    <div id="header-inner" class="inner">
+
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-this的指向详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/08/this的指向详解/" class="article-date">
+  <time datetime="2017-05-08T01:14:56.000Z" itemprop="datePublished">2017-05-08</time>
+</a>
+    
+  </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS中this对象指向总结
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在js中，每个函数在被调用时，会产生两个变量，this和arguments。这意味着，只有在函数调用之时，this的指向才能确定。</p>
+<p>this在运行时是根据执行环境绑定的，主要分为以下六种情况：<br>当包含this的函数：<br>1.作为普通的全局函数调用：在全局函数中，this指向window。<br>2.作为对象的方法调用：在函数被作为某个对象的方法调用时，this指向那个对象。<br>3.作为构造函数调用：当函数为构造函数，此时this指向实例出来的对象。<br>4.被apply,bind，call等改变执行环境时，this指向其他对象。<br>5.是匿名函数，this永远指向window（在不改变执行环境的情况下）。<br>6.其他情况。</p>
+<p>注意：无论那种情况，this的指向都遵循着根据执行环境绑定的规律。<br>下面进行详细说明：</p>
+<h2 id="一、作为普通全局函数调用"><a href="#一、作为普通全局函数调用" class="headerlink" title="一、作为普通全局函数调用"></a>一、作为普通全局函数调用</h2><p>看一个栗子。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var name=<span class="string">'w'</span>;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">a</span></span>()&#123;</div><div class="line">	console.log(this.name);</div><div class="line">&#125;;</div><div class="line">a();//<span class="string">'w'</span></div></pre></td></tr></table></figure></p>
+<p>此时，函数a作为普通的全局函数被window调用，这种调用方法最常见，在这里，函数a中this指向window。<br><a id="more"></a></p>
+<h2 id="二、作为对象的方法调用"><a href="#二、作为对象的方法调用" class="headerlink" title="二、作为对象的方法调用"></a>二、作为对象的方法调用</h2><p>再看一个栗子。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var name=<span class="string">'w'</span>;</div><div class="line">var b = &#123;</div><div class="line">	name:<span class="string">'b'</span>,</div><div class="line">	getName:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		<span class="built_in">return</span> this.name;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">console.log(b.getName());//<span class="string">'b'</span></div></pre></td></tr></table></figure></p>
+<p>此时，函数getName()作为b对象的方法调用，this指向b。</p>
+<h2 id="三、作为构造函数调用"><a href="#三、作为构造函数调用" class="headerlink" title="三、作为构造函数调用"></a>三、作为构造函数调用</h2><p>栗子again。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var name=<span class="string">'w'</span>;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">c</span></span>()&#123;</div><div class="line">	this.name=<span class="string">'c'</span>;</div><div class="line">	this.getName=<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		console.log(this.name);</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">var cc = new c();</div><div class="line">cc.getName();//<span class="string">'c'</span></div></pre></td></tr></table></figure></p>
+<p>这里的函数c是一个构造函数，cc是c类型的一个实例对象，函数c中的this指向cc,所以cc.name=’c’，所以this.name=’c’。</p>
+<h2 id="四、被apply-bind，call等改变执行环境"><a href="#四、被apply-bind，call等改变执行环境" class="headerlink" title="四、被apply,bind，call等改变执行环境"></a>四、被apply,bind，call等改变执行环境</h2><p>由于this与执行环境绑定，所以当执行环境改变，this的指向也会改变。<br>比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var name=<span class="string">'w'</span>;</div><div class="line">var d = &#123;</div><div class="line">	name:<span class="string">'d'</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">df</span></span>()&#123;</div><div class="line">	console.log(this.name);</div><div class="line">&#125;;</div><div class="line">df();//<span class="string">'w'</span></div><div class="line">df.call(d);//<span class="string">'d'</span></div></pre></td></tr></table></figure></p>
+<p>当df作为全局函数在全局作用域中调用时，this指向window。<br>但当df的执行环境通过call改变，df中的this指向也随之改变，指向d。<br>除了call，使用apply,bind等改变执行环境,效果相同。</p>
+<h2 id="五、匿名函数的this"><a href="#五、匿名函数的this" class="headerlink" title="五、匿名函数的this"></a>五、匿名函数的this</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var name=<span class="string">'w'</span>;</div><div class="line">var e = &#123;</div><div class="line">	name:<span class="string">'e'</span>,</div><div class="line">	getName:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">			<span class="built_in">return</span> this.name;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">console.log(e.getName()());//<span class="string">'w'</span></div></pre></td></tr></table></figure>
+<p>首先，前面说过，每个函数被调用时，都会自动生成两个变量：this和arguments。而内部函数被调用时，在搜索这两个变量时，只会搜索到活动对象为止，而永远不会访问到外部函数中的这两个变量。<br>其次，由于匿名函数具有全局性，在不改变执行环境情况的下，匿名函数的this永远指向window。<br>所以，当匿名函数作为闭包出现，在调用它时，其中的this通常指向window。<br>在此例中，调用了e对象的getName()方法中的匿名函数，匿名函数作为闭包出现，所以这里的this指向window。<br>如果非要访问外部作用域中的this，需要将this保存在内部函数能够访问到的变量里。如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name=<span class="string">'w'</span>;</div><div class="line">var e = &#123;</div><div class="line">	name:<span class="string">'e'</span>,</div><div class="line">	getName:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		var that = this;</div><div class="line">		<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">			<span class="built_in">return</span> that.name;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">console.log(e.getName()());//<span class="string">'e'</span></div></pre></td></tr></table></figure>
+<h2 id="六、其他情况"><a href="#六、其他情况" class="headerlink" title="六、其他情况"></a>六、其他情况</h2><p>1.函数作为事件处理程序调用<br>DOM0级和DOM2级事件处理程序在元素的作用域中运行，this指向当前元素。<br>IE事件处理程序在全局作用域中运行，this指向window。<br>2.语法细微变化也可能意外的引起this值的改变。<br>如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var name=<span class="string">'w'</span>;</div><div class="line">var object=&#123;</div><div class="line">	name: <span class="string">'My Object'</span>;</div><div class="line">	getName: <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		retuen this.name;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">object.getName();//<span class="string">'My Object'</span></div><div class="line">(object.getName = object.getName)();//<span class="string">'w'</span></div></pre></td></tr></table></figure>
+<p>(object.getName = object.getName)();<br>相当于:<br>（function(){<br>    retuen this.name;<br>})();</p>
+
+      
+    </div>
+
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/08/this的指向详解/" data-id="cj2fke9yi00016czskxhaqr21" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/08/DNS解析过程/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/28/js闭包/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS闭包及应用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JavaScript学习/" style="font-size: 20px;">JavaScript学习</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/08/DNS解析过程/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/08/this的指向详解/">JS中this对象指向总结</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/28/js闭包/">JS闭包及应用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/28/制作下拉菜单Tips/">制作下拉菜单Tips&amp;相关知识点复习</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/28/面向对象的程序设计（1）/">面向对象的程序设计——创建对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Iciqian<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
