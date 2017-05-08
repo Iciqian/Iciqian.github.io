@@ -34,7 +34,7 @@
     <link href="http://yoursite.com/2017/05/08/this%E7%9A%84%E6%8C%87%E5%90%91%E8%AF%A6%E8%A7%A3/"/>
     <id>http://yoursite.com/2017/05/08/this的指向详解/</id>
     <published>2017-05-08T01:14:56.000Z</published>
-    <updated>2017-05-08T05:10:54.000Z</updated>
+    <updated>2017-05-08T05:11:38.000Z</updated>
     
     <content type="html"><![CDATA[<p>在js中，每个函数在被调用时，会产生两个变量，this和arguments。这意味着，只有在函数调用之时，this的指向才能确定。</p>
 <p>this在运行时是根据执行环境绑定的，主要分为以下六种情况：<br>当包含this的函数：<br>1.作为普通的全局函数调用：在全局函数中，this指向window。<br>2.作为对象的方法调用：在函数被作为某个对象的方法调用时，this指向那个对象。<br>3.作为构造函数调用：当函数为构造函数，此时this指向实例出来的对象。<br>4.被apply,bind，call等改变执行环境时，this指向其他对象。<br>5.是匿名函数，this永远指向window（在不改变执行环境的情况下）。<br>6.其他情况。</p>
