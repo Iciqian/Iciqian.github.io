@@ -69,9 +69,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-js闭包" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-制作下拉菜单Tips" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/28/js闭包/" class="article-date">
+    <a href="/2017/02/28/制作下拉菜单Tips/" class="article-date">
   <time datetime="2017-02-28T13:11:08.000Z" itemprop="datePublished">2017-02-28</time>
 </a>
     
@@ -84,7 +84,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/js闭包/">JS闭包及应用</a>
+      <a class="article-title" href="/2017/02/28/制作下拉菜单Tips/">制作下拉菜单Tips&amp;相关知识点复习</a>
     </h1>
   
 
@@ -93,20 +93,21 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>定义：闭包是有权访问另一函数作用域的变量的函数。<br>常见创建闭包的方式：在一个函数内部创建另一个函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">str</span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> hello = <span class="string">"hello"</span>;</div><div class="line"> <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(hello+str);</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <h2 id="制作多级菜单"><a href="#制作多级菜单" class="headerlink" title="制作多级菜单"></a>制作多级菜单</h2><p>在第一层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建二级菜单，在第二层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建三级菜单…以此类推。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   &lt;ul class=<span class="string">"top_nav"</span>&gt;          </div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;课程大厅&lt;/a&gt; &lt;!--一级菜单--&gt;</div><div class="line">		&lt;ul&gt;                  </div><div class="line">			&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;前端课程&lt;/a&gt; &lt;!--二级菜单--&gt;</div><div class="line">				&lt;ul&gt;          </div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;html&lt;/a&gt;&lt;/li&gt; &lt;!--三级菜单--&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;css&lt;/a&gt;&lt;/li&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;javascript&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;/ul&gt;</div><div class="line">			&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;学习中心&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;关于我们&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
+<p>对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。<br>
         
           <p class="article-more-link">
-            <a href="/2017/02/28/js闭包/#more">Read More</a>
+            <a href="/2017/02/28/制作下拉菜单Tips/#more">Read More</a>
           </p>
         
       
     </div>
 
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/28/js闭包/" data-id="cj2j2qo9q0004npzs6g72seg8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/28/制作下拉菜单Tips/" data-id="cj2pra0kr0006o0zsd96reefo" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
 
     </footer>
 
@@ -133,7 +134,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器知识学习/">浏览器知识学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
     </div>
   </div>
 
@@ -143,7 +144,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JavaScript学习/" style="font-size: 20px;">JavaScript学习</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/tags/浏览器知识学习/" style="font-size: 10px;">浏览器知识学习</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a>
+      <a href="/tags/JavaScript学习/" style="font-size: 20px;">JavaScript学习</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/tags/计算机网络/" style="font-size: 15px;">计算机网络</a>
     </div>
   </div>
 
@@ -181,7 +182,7 @@
           </li>
         
           <li>
-            <a href="/2017/02/28/制作下拉菜单Tips/">制作下拉菜单Tips&amp;相关知识点复习</a>
+            <a href="/2017/02/28/js闭包/">JS闭包及应用</a>
           </li>
         
       </ul>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-15T06:31:58.000Z</updated>
+  <updated>2017-05-15T08:12:06.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,21 +20,26 @@
     <link href="http://yoursite.com/2017/05/12/TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/"/>
     <id>http://yoursite.com/2017/05/12/TCP的三次握手和四次挥手/</id>
     <published>2017-05-12T14:49:17.000Z</published>
-    <updated>2017-05-15T06:31:58.000Z</updated>
+    <updated>2017-05-15T08:12:06.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="TCP报文格式："><a href="#TCP报文格式：" class="headerlink" title="TCP报文格式："></a>TCP报文格式：</h3><p><img src="https://pic4.zhimg.com/v2-c6d70b9f08ae74a2cde80cb6f3eb849b_r.png" alt=""></p>
-<h3 id="TCP连接建立："><a href="#TCP连接建立：" class="headerlink" title="TCP连接建立："></a>TCP连接建立：</h3><p>第一次握手：首先，客户端向服务端发送连接请求SYN报文。标志位SYN置为1，序号(随机)为j，即SYN=1 seq=j 。客户端进入SYN_SENT状态。</p>
+    <content type="html"><![CDATA[<h3 id="一、TCP协议简介"><a href="#一、TCP协议简介" class="headerlink" title="一、TCP协议简介"></a>一、TCP协议简介</h3><p>TCP（Transmission Control Protocol 传输控制协议）是一种面向连接的、可靠的、基于字节流的传输层通信协议），通过三次握手建立连接，通讯完成时要拆除连接，由于TCP是面向连接的所以只能用于端到端的通讯。</p>
+<h3 id="二、TCP协议头部的格式："><a href="#二、TCP协议头部的格式：" class="headerlink" title="二、TCP协议头部的格式："></a>二、TCP协议头部的格式：</h3><p><img src="http://wx2.sinaimg.cn/mw690/006bAzaMly1ffm1igm5v6j30an04o3yk.jpg" alt=""></p>
+<h3 id="三、TCP连接建立："><a href="#三、TCP连接建立：" class="headerlink" title="三、TCP连接建立："></a>三、TCP连接建立：</h3><p>第一次握手：首先，客户端向服务端发送连接请求SYN报文。标志位SYN置为1，序号(随机)为j，即SYN=1 seq=j 。客户端进入SYN_SENT状态。</p>
 <p>第二次握手：服务器接收到SYN报文后，发送SYN+ACK报文。将标志位的SYN和ACK都置为1，并将序号置为k，确认号置为j+1。即 SYN=1 ACK=1 seq=k ack=j+1 。服务器进入SYN_RECV状态。</p>
 <p>第三次握手：客户端接收到SYN+ACK报文后，检查ACK与ack。检查无误，向服务器发送ACK报文，将标志位ACK置为1，确认号为k+1，即 ACK=1 ack=k+1。服务器接收到后，检查ACK与ack。检查无误，客户端和服务器进入ESTABLISHED状态，完成三次握手，建立TCP连接，开始传输数据。</p>
-<p>为什么三次握手？<br>1.建立稳定的连接，双方都能向对方发送报文，也能确认对方能收自己的报文。<br>2.防止错误响应已失效的连接请求报文段。</p>
-<p>简略版：<br>客户端：让我们建立连接吧！服务端！<br>服务端：好的客户端我收到了你发送的信息！让我们建立连接吧！<br>客户端：知道了服务端，我也能收到你发送的信息！</p>
-<h3 id="TCP连接中断"><a href="#TCP连接中断" class="headerlink" title="TCP连接中断"></a>TCP连接中断</h3><p>第一次挥手：客户端发起中断连接请求，发送FIN报文：将标志位FIN置为1，序号置为u。此时客户端进入FIN_WAIT_1状态，表示没有数据要传输给服务端了。<br>第二次挥手：服务端收到FIN报文后，发送ACK报文，表示同意关闭请求：标志位ACK置为1，确认序号为u+1。此时服务端进入CLOSE_WAIT状态，客户端接受到ACK报文后，进入FIN_WAIT_2状态。<br>第三次挥手：服务端再发送一个FIN报文，请求关闭连接：标志位FIN置为1，序号为w。服务端进入LAST_ACK状态，表示没有数据要传输给客户端了。<br>第四次挥手：客户端收到FIN报文后，发送一个ACK报文，确认序号为w+1，此时客户端进入TIME_WAIT状态。服务端收到ACK报文后，进入CLOSED状态。此时客户端会等待2MSL，如果没有收到回复，证明服务端已经关闭了连接，那么客户端也会关闭连接。至此，四次挥手完成，TCP连接断开。</p>
-<p>简略版：<br>客户端：我要请求关闭连接！我没有数据要传输给你了！<br>服务端：好的我知道了！诶你等等，我看看还有没有数据没传输完！<br>服务端：关闭连接吧！客户端！<br>客户端：好的我知道了！你先关吧！<br>客户端等了2MLS后，并没有受到服务器的回复，得知服务端已经关闭了连接，于是自己也关闭了。</p>
+<p>简略版：<br>客户端：让我们建立连接吧！服务端！<br>服务端：好的客户端我收到了你发送的信息！让我们建立连接吧！<br>客户端：知道了服务端，我也能收到你发送的信息！<br>服务器得知客户端能接受到自己发送的信息，连接建立。</p>
+<h5 id="为什么要进行三次握手？"><a href="#为什么要进行三次握手？" class="headerlink" title="为什么要进行三次握手？"></a>为什么要进行三次握手？</h5><p>1.建立稳定的连接，双方都能向对方发送报文，也能确认对方能收自己的报文。<br>2.防止服务端因已失效的连接请求报文段浪费资源。<br>当客户端发出了一个连接请求报文，然而该请求却在网络中某节点被阻塞住了，以至于延误到连接释放以后的某个时间才到达服务端。此时服务器会向客户端发送确认报文，如果只有两次握手，那么此时连接就建立了…服务器将长时间等待客户端发数据，却一直等不到，造成资源的极大浪费。如果是三次握手呢，由于客户端并不会回复服务器的确认报文，连接并不会建立，节约了资源。</p>
+<h3 id="四、TCP连接中断"><a href="#四、TCP连接中断" class="headerlink" title="四、TCP连接中断"></a>四、TCP连接中断</h3><p>第一次挥手：客户端发起中断连接请求，发送FIN报文：将标志位FIN置为1，序号置为u。此时客户端进入FIN_WAIT_1状态，表示没有数据要传输给服务端了。</p>
+<p>第二次挥手：服务端收到FIN报文后，发送ACK报文，表示同意关闭请求：标志位ACK置为1，确认序号为u+1。此时服务端进入CLOSE_WAIT状态，客户端接受到ACK报文后，进入FIN_WAIT_2状态。</p>
+<p>第三次挥手：服务端再发送一个FIN报文，请求关闭连接：标志位FIN置为1，序号为w。服务端进入LAST_ACK状态，表示没有数据要传输给客户端了。</p>
+<p>第四次挥手：客户端收到FIN报文后，发送一个ACK报文，确认序号为w+1，此时客户端进入TIME_WAIT状态。服务端收到ACK报文后，进入CLOSED状态。此时客户端会等待2MSL，如果没有收到回复，证明服务端已经关闭了连接，那么客户端也会关闭连接，进入CLOSED状态。至此，四次挥手完成，TCP连接断开。如果在TIME_WAIT状态中，客户端最后一次发送的ACK丢失了，它将重新发送。</p>
+<p>简略版：<br>客户端：我要请求关闭连接！我没有数据要传输给你了！<br>服务端：好的我知道了！诶你等等，我看看还有没有数据没传输完！<br>服务端：关闭连接吧！客户端！<br>客户端：好的我知道了！<br>客户端等了2MLS后，并没有受到服务器的回复，得知服务端已经关闭了连接，于是自己也关闭了。</p>
+<h5 id="为什么要进行四次挥手？"><a href="#为什么要进行四次挥手？" class="headerlink" title="为什么要进行四次挥手？"></a>为什么要进行四次挥手？</h5><p>因为TCP连接是全双工模式。当关闭连接时，一方收到另一方的FIN报文，仅仅表示另一方不再发送数据了，但是还可以接收数据，而自己也不一定将所有数据都发送给对方了。<br>表现就是，服务端接收到客户端发来的FIN报文时，不会立即发送FIN报文，而是会先回复一个ACK报文，并进入CLOSE_WAIT状态。这是因为服务端此时可能并没有传输完数据，只有当没有数据需要传输了，才会发送FIN报文给客户端，同意断开连接。而所以需要四次挥手。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;TCP报文格式：&quot;&gt;&lt;a href=&quot;#TCP报文格式：&quot; class=&quot;headerlink&quot; title=&quot;TCP报文格式：&quot;&gt;&lt;/a&gt;TCP报文格式：&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://pic4.zhimg.com/v2-c6d70b9f08
+      &lt;h3 id=&quot;一、TCP协议简介&quot;&gt;&lt;a href=&quot;#一、TCP协议简介&quot; class=&quot;headerlink&quot; title=&quot;一、TCP协议简介&quot;&gt;&lt;/a&gt;一、TCP协议简介&lt;/h3&gt;&lt;p&gt;TCP（Transmission Control Protocol 传输控制协议）是
     
     </summary>
     
@@ -78,7 +83,7 @@
     <link href="http://yoursite.com/2017/05/08/DNS%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B/"/>
     <id>http://yoursite.com/2017/05/08/DNS解析过程/</id>
     <published>2017-05-08T01:15:57.000Z</published>
-    <updated>2017-05-10T14:25:19.000Z</updated>
+    <updated>2017-05-15T06:42:55.000Z</updated>
     
     <content type="html"><![CDATA[<p>从输入网址到网页呈现，第一步就是通过DNS将该地址解析成IP地址。</p>
 <p>1.首先，浏览器会查询缓存中是否有与该域名对应的IP地址，如果有，解析结束。<br>2.如果在浏览器缓存中查找不到，浏览器会查询操作系统缓存是否有与该域名对应的IP地址，如果有，解析结束。<br>3.如果在操作系统缓存中也查找不到，浏览器向本地DNS服务器发起解析请求，解析程序把待解析的域名放在DNS请求报文中，以UDP用户数据的方式发给本地DNS服务器，进行递归查询。<br>4.本地DNS服务器收到请求后，先查询本地缓存，如果查找到与该域名对应的IP地址，直接将查询结果返回。<br>5.如果本地DNS服务器中没有对应的记录，本地DNS服务器便会发起迭代查询，首先查询根域名服务器。<br>6.根域名服务器返回给本地DNS服务器包含下一级域名的DNS服务器的IP地址，本地DNS服务器根据这个IP地址访问下一级DNS服务器，再得到下一级域名的信息的DNS服务器地址。<br>7.按上述方法迭代查询。直到在含有目标域名的DNS服务器上找到相对应的IP地址。<br>8.本地DNS服务器缓存域名与IP地址的对应关系（缓存时间由TTL值控制），并将查询结果返回浏览器。<br>9.浏览器根据IP地址访问目标主机，并将域名与IP地址的对应关系保存在缓存中（缓存时间由TTL值控制）。</p>
@@ -92,7 +97,7 @@
     </summary>
     
     
-      <category term="浏览器知识学习" scheme="http://yoursite.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"/>
+      <category term="计算机网络" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
@@ -134,38 +139,6 @@
     
     
       <category term="JavaScript学习" scheme="http://yoursite.com/tags/JavaScript%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>制作下拉菜单Tips&amp;相关知识点复习</title>
-    <link href="http://yoursite.com/2017/02/28/%E5%88%B6%E4%BD%9C%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95Tips/"/>
-    <id>http://yoursite.com/2017/02/28/制作下拉菜单Tips/</id>
-    <published>2017-02-28T13:11:08.000Z</published>
-    <updated>2017-05-08T03:40:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="制作多级菜单"><a href="#制作多级菜单" class="headerlink" title="制作多级菜单"></a>制作多级菜单</h2><p>在第一层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建二级菜单，在第二层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建三级菜单…以此类推。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   &lt;ul class=<span class="string">"top_nav"</span>&gt;          </div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;课程大厅&lt;/a&gt; &lt;!--一级菜单--&gt;</div><div class="line">		&lt;ul&gt;                  </div><div class="line">			&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;前端课程&lt;/a&gt; &lt;!--二级菜单--&gt;</div><div class="line">				&lt;ul&gt;          </div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;html&lt;/a&gt;&lt;/li&gt; &lt;!--三级菜单--&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;css&lt;/a&gt;&lt;/li&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;javascript&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;/ul&gt;</div><div class="line">			&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;学习中心&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;关于我们&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
-<p>对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。<br><a id="more"></a></p>
-<h2 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h2><p>鼠标停留在菜单上，以某种动画效果显示下一级菜单；鼠标离开，下一级菜单隐藏。</p>
-<h3 id="JavaScript实现"><a href="#JavaScript实现" class="headerlink" title="JavaScript实现"></a>JavaScript实现</h3><blockquote>
-<p>思路：<br>Step1:遍历所有<code>&lt;li&gt;</code>标签，为所有的li添加onmouseover和onmouseout事件；<br>Step2:如果此li下包含子元素ul（非孙辈），则把该子元素ul和指定属性的目标值作为参数传入move函数；<br>Step3:move函数：为传入的ul绑定定时器，设定速度（注意小数点），在指定属性现值不等于目标值的情况下，指定属性值为现值加速度，否则清除定时器。  为避免鼠标移动过快出现多个定时器，在move函数开头也需清除定时器；<br>Step4:获取html元素的属性值需要编写getStyle()函数； </p>
-</blockquote>
-<h3 id="jquery实现"><a href="#jquery实现" class="headerlink" title="jquery实现"></a>jquery实现</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(document).ready(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">$(<span class="string">'li'</span>).has(<span class="string">'ul'</span>).mouseover(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">$(this).children(<span class="string">'ul'</span>).css(<span class="string">'display'</span>,<span class="string">'block'</span>)&#125;).mouseout(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">$(this).children(<span class="string">'ul'</span>).css(<span class="string">'display'</span>,<span class="string">'none'</span>);</div><div class="line">&#125;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h3 id="CSS3实现"><a href="#CSS3实现" class="headerlink" title="CSS3实现"></a>CSS3实现</h3><blockquote>
-<p>思路：使用transition属性实现;  </p>
-</blockquote>
-<h4 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h4><p><strong>Transition:</strong><br>用于在一定的时间内平滑的过渡，可以在鼠标点击，获取焦点，被点击或对元素任何改变中触发，并以圆滑的动画效果改变css属性的属性值。<br><strong>取值：</strong><br>&lt;’ transition-property ‘&gt;： 检索或设置对象中的参与过渡的属性<br>&lt;’ transition-duration ‘&gt;： 检索或设置对象过渡的持续时间<br>&lt;’ transition-timing-function ‘&gt;： 检索或设置对象中过渡的动画类型<br>&lt;’ transition-delay ‘&gt;： 检索或设置对象延迟过渡的时间<br><strong>eg:</strong><br>Transition-property: border-color, background-color, color<br>Transition-duration:.2s<br>Transition-timing-function:ease-in<br>Transition-delay:.1s<br>或<br>Transition:all,.2s,ease-in<br><em>设置transition属性后，需hover，focus等触发。</em><br><strong>兼容：</strong><br>IE10.0+, Firefox4.0-15.0(-moz-) 16.0+, Chrome4.0-25.0(-webkit-) 26+, Safari6.0(-webkit-) 6.1+, Opera15.0+</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;制作多级菜单&quot;&gt;&lt;a href=&quot;#制作多级菜单&quot; class=&quot;headerlink&quot; title=&quot;制作多级菜单&quot;&gt;&lt;/a&gt;制作多级菜单&lt;/h2&gt;&lt;p&gt;在第一层&lt;code&gt;&amp;lt;li&amp;gt;&lt;/code&gt;标签下添加&lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt;标签，创建二级菜单，在第二层&lt;code&gt;&amp;lt;li&amp;gt;&lt;/code&gt;标签下添加&lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt;标签，创建三级菜单…以此类推。&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;   &amp;lt;ul class=&lt;span class=&quot;string&quot;&gt;&quot;top_nav&quot;&lt;/span&gt;&amp;gt;          &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;课程大厅&amp;lt;/a&amp;gt; &amp;lt;!--一级菜单--&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&amp;lt;ul&amp;gt;                  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;前端课程&amp;lt;/a&amp;gt; &amp;lt;!--二级菜单--&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;				&amp;lt;ul&amp;gt;          &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;					&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;html&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;!--三级菜单--&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;					&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;css&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;					&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;javascript&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;				&amp;lt;/ul&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&amp;lt;/ul&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;学习中心&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;关于我们&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="技巧" scheme="http://yoursite.com/tags/%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
@@ -224,6 +197,38 @@
     
     
       <category term="JavaScript学习" scheme="http://yoursite.com/tags/JavaScript%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>制作下拉菜单Tips&amp;相关知识点复习</title>
+    <link href="http://yoursite.com/2017/02/28/%E5%88%B6%E4%BD%9C%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95Tips/"/>
+    <id>http://yoursite.com/2017/02/28/制作下拉菜单Tips/</id>
+    <published>2017-02-28T13:11:08.000Z</published>
+    <updated>2017-05-08T03:40:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="制作多级菜单"><a href="#制作多级菜单" class="headerlink" title="制作多级菜单"></a>制作多级菜单</h2><p>在第一层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建二级菜单，在第二层<code>&lt;li&gt;</code>标签下添加<code>&lt;ul&gt;</code>标签，创建三级菜单…以此类推。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   &lt;ul class=<span class="string">"top_nav"</span>&gt;          </div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;课程大厅&lt;/a&gt; &lt;!--一级菜单--&gt;</div><div class="line">		&lt;ul&gt;                  </div><div class="line">			&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;前端课程&lt;/a&gt; &lt;!--二级菜单--&gt;</div><div class="line">				&lt;ul&gt;          </div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;html&lt;/a&gt;&lt;/li&gt; &lt;!--三级菜单--&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;css&lt;/a&gt;&lt;/li&gt;</div><div class="line">					&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;javascript&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;/ul&gt;</div><div class="line">			&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;学习中心&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;关于我们&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
+<p>对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。<br><a id="more"></a></p>
+<h2 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h2><p>鼠标停留在菜单上，以某种动画效果显示下一级菜单；鼠标离开，下一级菜单隐藏。</p>
+<h3 id="JavaScript实现"><a href="#JavaScript实现" class="headerlink" title="JavaScript实现"></a>JavaScript实现</h3><blockquote>
+<p>思路：<br>Step1:遍历所有<code>&lt;li&gt;</code>标签，为所有的li添加onmouseover和onmouseout事件；<br>Step2:如果此li下包含子元素ul（非孙辈），则把该子元素ul和指定属性的目标值作为参数传入move函数；<br>Step3:move函数：为传入的ul绑定定时器，设定速度（注意小数点），在指定属性现值不等于目标值的情况下，指定属性值为现值加速度，否则清除定时器。  为避免鼠标移动过快出现多个定时器，在move函数开头也需清除定时器；<br>Step4:获取html元素的属性值需要编写getStyle()函数； </p>
+</blockquote>
+<h3 id="jquery实现"><a href="#jquery实现" class="headerlink" title="jquery实现"></a>jquery实现</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(document).ready(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">$(<span class="string">'li'</span>).has(<span class="string">'ul'</span>).mouseover(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">$(this).children(<span class="string">'ul'</span>).css(<span class="string">'display'</span>,<span class="string">'block'</span>)&#125;).mouseout(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">$(this).children(<span class="string">'ul'</span>).css(<span class="string">'display'</span>,<span class="string">'none'</span>);</div><div class="line">&#125;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="CSS3实现"><a href="#CSS3实现" class="headerlink" title="CSS3实现"></a>CSS3实现</h3><blockquote>
+<p>思路：使用transition属性实现;  </p>
+</blockquote>
+<h4 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h4><p><strong>Transition:</strong><br>用于在一定的时间内平滑的过渡，可以在鼠标点击，获取焦点，被点击或对元素任何改变中触发，并以圆滑的动画效果改变css属性的属性值。<br><strong>取值：</strong><br>&lt;’ transition-property ‘&gt;： 检索或设置对象中的参与过渡的属性<br>&lt;’ transition-duration ‘&gt;： 检索或设置对象过渡的持续时间<br>&lt;’ transition-timing-function ‘&gt;： 检索或设置对象中过渡的动画类型<br>&lt;’ transition-delay ‘&gt;： 检索或设置对象延迟过渡的时间<br><strong>eg:</strong><br>Transition-property: border-color, background-color, color<br>Transition-duration:.2s<br>Transition-timing-function:ease-in<br>Transition-delay:.1s<br>或<br>Transition:all,.2s,ease-in<br><em>设置transition属性后，需hover，focus等触发。</em><br><strong>兼容：</strong><br>IE10.0+, Firefox4.0-15.0(-moz-) 16.0+, Chrome4.0-25.0(-webkit-) 26+, Safari6.0(-webkit-) 6.1+, Opera15.0+</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;制作多级菜单&quot;&gt;&lt;a href=&quot;#制作多级菜单&quot; class=&quot;headerlink&quot; title=&quot;制作多级菜单&quot;&gt;&lt;/a&gt;制作多级菜单&lt;/h2&gt;&lt;p&gt;在第一层&lt;code&gt;&amp;lt;li&amp;gt;&lt;/code&gt;标签下添加&lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt;标签，创建二级菜单，在第二层&lt;code&gt;&amp;lt;li&amp;gt;&lt;/code&gt;标签下添加&lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt;标签，创建三级菜单…以此类推。&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;   &amp;lt;ul class=&lt;span class=&quot;string&quot;&gt;&quot;top_nav&quot;&lt;/span&gt;&amp;gt;          &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;课程大厅&amp;lt;/a&amp;gt; &amp;lt;!--一级菜单--&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&amp;lt;ul&amp;gt;                  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;前端课程&amp;lt;/a&amp;gt; &amp;lt;!--二级菜单--&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;				&amp;lt;ul&amp;gt;          &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;					&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;html&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;!--三级菜单--&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;					&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;css&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;					&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;javascript&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;				&amp;lt;/ul&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&amp;lt;/ul&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;学习中心&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;li&amp;gt;&amp;lt;a href=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;关于我们&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;对所有li元素设置position：relative，对li元素下的子元素ul设置position：absolute，使下一级菜单相对于上一级菜单定位。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="技巧" scheme="http://yoursite.com/tags/%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
