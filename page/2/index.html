@@ -69,9 +69,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-面向对象的程序设计（2）" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-js闭包" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/28/面向对象的程序设计（2）/" class="article-date">
+    <a href="/2017/02/28/js闭包/" class="article-date">
   <time datetime="2017-02-28T13:11:08.000Z" itemprop="datePublished">2017-02-28</time>
 </a>
     
@@ -84,7 +84,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/面向对象的程序设计（2）/">面向对象的程序设计——继承</a>
+      <a class="article-title" href="/2017/02/28/js闭包/">JS闭包及应用</a>
     </h1>
   
 
@@ -93,14 +93,21 @@
 
     <div class="article-entry" itemprop="articleBody">
       
+        <p>定义：闭包是有权访问另一函数作用域的变量的函数。<br>常见创建闭包的方式：在一个函数内部创建另一个函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">str</span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> hello = <span class="string">"hello"</span>;</div><div class="line"> <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(hello+str);</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/02/28/js闭包/#more">Read More</a>
+          </p>
         
       
     </div>
 
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/28/面向对象的程序设计（2）/" data-id="cj2fr4dis0007tszsrmtd0g9a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/28/js闭包/" data-id="cj2j2qo9q0004npzs6g72seg8" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li></ul>
+
     </footer>
 
   </div>
@@ -126,7 +133,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器知识学习/">浏览器知识学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
     </div>
   </div>
 
@@ -136,7 +143,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JavaScript学习/" style="font-size: 20px;">JavaScript学习</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a>
+      <a href="/tags/JavaScript学习/" style="font-size: 20px;">JavaScript学习</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/tags/浏览器知识学习/" style="font-size: 10px;">浏览器知识学习</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a>
     </div>
   </div>
 
@@ -158,7 +165,15 @@
       <ul>
         
           <li>
-            <a href="/2017/05/08/DNS解析过程/">(no title)</a>
+            <a href="/2017/05/12/TCP的三次握手和四次挥手/">TCP的三次握手和四次挥手</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/11/关于获取元素尺寸和和位置属性的总结/">关于获取元素尺寸和位置属性的总结</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/08/DNS解析过程/">DNS解析过程简述</a>
           </li>
         
           <li>
@@ -166,15 +181,7 @@
           </li>
         
           <li>
-            <a href="/2017/02/28/js闭包/">JS闭包及应用</a>
-          </li>
-        
-          <li>
             <a href="/2017/02/28/制作下拉菜单Tips/">制作下拉菜单Tips&amp;相关知识点复习</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/28/面向对象的程序设计（1）/">面向对象的程序设计——创建对象</a>
           </li>
         
       </ul>

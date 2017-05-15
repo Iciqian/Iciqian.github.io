@@ -3,15 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Iciqian的博客</title>
+  <title>DNS解析过程简述 | Iciqian的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="Iciqian的博客">
+  <meta name="description" content="从输入网址到网页呈现，第一步就是通过DNS将该地址解析成IP地址。
+1.首先，浏览器会查询缓存中是否有与该域名对应的IP地址，如果有，解析结束。2.如果在浏览器缓存中查找不到，浏览器会查询操作系统缓存是否有与该域名对应的IP地址，如果有，解析结束。3.如果在操作系统缓存中也查找不到，浏览器向本地DNS服务器发起解析请求，解析程序把待解析的域名放在DNS请求报文中，以UDP用户数据的方式发给本地DN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DNS解析过程简述">
 <meta property="og:url" content="http://yoursite.com/2017/05/08/DNS解析过程/index.html">
 <meta property="og:site_name" content="Iciqian的博客">
-<meta property="og:updated_time" content="2017-05-08T01:15:57.000Z">
+<meta property="og:description" content="从输入网址到网页呈现，第一步就是通过DNS将该地址解析成IP地址。
+1.首先，浏览器会查询缓存中是否有与该域名对应的IP地址，如果有，解析结束。2.如果在浏览器缓存中查找不到，浏览器会查询操作系统缓存是否有与该域名对应的IP地址，如果有，解析结束。3.如果在操作系统缓存中也查找不到，浏览器向本地DNS服务器发起解析请求，解析程序把待解析的域名放在DNS请求报文中，以UDP用户数据的方式发给本地DN">
+<meta property="og:updated_time" content="2017-05-10T14:25:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Iciqian的博客">
+<meta name="twitter:title" content="DNS解析过程简述">
+<meta name="twitter:description" content="从输入网址到网页呈现，第一步就是通过DNS将该地址解析成IP地址。
+1.首先，浏览器会查询缓存中是否有与该域名对应的IP地址，如果有，解析结束。2.如果在浏览器缓存中查找不到，浏览器会查询操作系统缓存是否有与该域名对应的IP地址，如果有，解析结束。3.如果在操作系统缓存中也查找不到，浏览器向本地DNS服务器发起解析请求，解析程序把待解析的域名放在DNS请求报文中，以UDP用户数据的方式发给本地DN">
   
     <link rel="alternate" href="/atom.xml" title="Iciqian的博客" type="application/atom+xml">
   
@@ -79,17 +85,31 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DNS解析过程简述
+    </h1>
+  
+
+      </header>
+    
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>从输入网址到网页呈现，第一步就是通过DNS将该地址解析成IP地址。</p>
+<p>1.首先，浏览器会查询缓存中是否有与该域名对应的IP地址，如果有，解析结束。<br>2.如果在浏览器缓存中查找不到，浏览器会查询操作系统缓存是否有与该域名对应的IP地址，如果有，解析结束。<br>3.如果在操作系统缓存中也查找不到，浏览器向本地DNS服务器发起解析请求，解析程序把待解析的域名放在DNS请求报文中，以UDP用户数据的方式发给本地DNS服务器，进行递归查询。<br>4.本地DNS服务器收到请求后，先查询本地缓存，如果查找到与该域名对应的IP地址，直接将查询结果返回。<br>5.如果本地DNS服务器中没有对应的记录，本地DNS服务器便会发起迭代查询，首先查询根域名服务器。<br>6.根域名服务器返回给本地DNS服务器包含下一级域名的DNS服务器的IP地址，本地DNS服务器根据这个IP地址访问下一级DNS服务器，再得到下一级域名的信息的DNS服务器地址。<br>7.按上述方法迭代查询。直到在含有目标域名的DNS服务器上找到相对应的IP地址。<br>8.本地DNS服务器缓存域名与IP地址的对应关系（缓存时间由TTL值控制），并将查询结果返回浏览器。<br>9.浏览器根据IP地址访问目标主机，并将域名与IP地址的对应关系保存在缓存中（缓存时间由TTL值控制）。</p>
+
       
     </div>
 
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/08/DNS解析过程/" data-id="cj2fr4dhx0000tszsi2prwegv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/08/DNS解析过程/" data-id="cj2j2qo9b0000npzsscfcem39" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器知识学习/">浏览器知识学习</a></li></ul>
+
     </footer>
 
   </div>
@@ -97,6 +117,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2017/05/11/关于获取元素尺寸和和位置属性的总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          关于获取元素尺寸和位置属性的总结
+        
+      </div>
+    </a>
   
   
     <a href="/2017/05/08/this的指向详解/" id="article-nav-older" class="article-nav-link-wrap">
@@ -120,7 +149,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器知识学习/">浏览器知识学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
     </div>
   </div>
 
@@ -130,7 +159,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JavaScript学习/" style="font-size: 20px;">JavaScript学习</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a>
+      <a href="/tags/JavaScript学习/" style="font-size: 20px;">JavaScript学习</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/tags/浏览器知识学习/" style="font-size: 10px;">浏览器知识学习</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a>
     </div>
   </div>
 
@@ -152,7 +181,15 @@
       <ul>
         
           <li>
-            <a href="/2017/05/08/DNS解析过程/">(no title)</a>
+            <a href="/2017/05/12/TCP的三次握手和四次挥手/">TCP的三次握手和四次挥手</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/11/关于获取元素尺寸和和位置属性的总结/">关于获取元素尺寸和位置属性的总结</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/08/DNS解析过程/">DNS解析过程简述</a>
           </li>
         
           <li>
@@ -160,15 +197,7 @@
           </li>
         
           <li>
-            <a href="/2017/02/28/js闭包/">JS闭包及应用</a>
-          </li>
-        
-          <li>
             <a href="/2017/02/28/制作下拉菜单Tips/">制作下拉菜单Tips&amp;相关知识点复习</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/28/面向对象的程序设计（1）/">面向对象的程序设计——创建对象</a>
           </li>
         
       </ul>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于获取元素尺寸和位置属性的总结 | Iciqian的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="正在写一个飞机大战的小游戏，编写过程中发现一个小问题：当获取隐藏元素尺寸时，offsetWidth与offsetHeight属性无效。研究一番，发现原来是由于这两个属性是元素通过css渲染到页面上时才计算的，而display:none的隐藏元素不参与渲染，因此无法获取尺寸。解决方法很简单，使用height:0px来隐藏元素即可。趁此机会，总结一下几个易混淆的用于获取元素尺寸和位置的属性。
+偏移量（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于获取元素尺寸和位置属性的总结">
+<meta property="og:url" content="http://yoursite.com/2017/05/11/关于获取元素尺寸和和位置属性的总结/index.html">
+<meta property="og:site_name" content="Iciqian的博客">
+<meta property="og:description" content="正在写一个飞机大战的小游戏，编写过程中发现一个小问题：当获取隐藏元素尺寸时，offsetWidth与offsetHeight属性无效。研究一番，发现原来是由于这两个属性是元素通过css渲染到页面上时才计算的，而display:none的隐藏元素不参与渲染，因此无法获取尺寸。解决方法很简单，使用height:0px来隐藏元素即可。趁此机会，总结一下几个易混淆的用于获取元素尺寸和位置的属性。
+偏移量（">
+<meta property="og:updated_time" content="2017-05-11T14:55:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于获取元素尺寸和位置属性的总结">
+<meta name="twitter:description" content="正在写一个飞机大战的小游戏，编写过程中发现一个小问题：当获取隐藏元素尺寸时，offsetWidth与offsetHeight属性无效。研究一番，发现原来是由于这两个属性是元素通过css渲染到页面上时才计算的，而display:none的隐藏元素不参与渲染，因此无法获取尺寸。解决方法很简单，使用height:0px来隐藏元素即可。趁此机会，总结一下几个易混淆的用于获取元素尺寸和位置的属性。
+偏移量（">
+  
+    <link rel="alternate" href="/atom.xml" title="Iciqian的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Iciqian的博客</a>
+      </h1>
+      
+    </div>
+
+    <div id="header-inner" class="inner">
+
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-关于获取元素尺寸和和位置属性的总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/11/关于获取元素尺寸和和位置属性的总结/" class="article-date">
+  <time datetime="2017-05-11T13:05:56.000Z" itemprop="datePublished">2017-05-11</time>
+</a>
+    
+  </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于获取元素尺寸和位置属性的总结
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>正在写一个飞机大战的小游戏，编写过程中发现一个小问题：当获取隐藏元素尺寸时，offsetWidth与offsetHeight属性无效。研究一番，发现原来是由于这两个属性是元素通过css渲染到页面上时才计算的，而display:none的隐藏元素不参与渲染，因此无法获取尺寸。解决方法很简单，使用height:0px来隐藏元素即可。<br>趁此机会，总结一下几个易混淆的用于获取元素尺寸和位置的属性。</p>
+<h3 id="偏移量（offset-dimension）"><a href="#偏移量（offset-dimension）" class="headerlink" title="偏移量（offset dimension）"></a>偏移量（offset dimension）</h3><p>偏移量包括元素在屏幕上占用的所有可见空间，包括所有内边距、滚动条和边框大小。只读。<br>offsetHeight:元素在垂直方向占用空间大小。包括元素内容区高度、上下内边距高度、（可见）水平滚动条高度和上下边框高度。<br>offsetWidth:元素在水平方向占用空间大小。包括元素区宽度、左右内边距宽度、（可见）垂直滚动条的宽度和左右边框的宽度。<br>offsetLeft:元素的左外边框距离定位父元素（保存在offsetParent属性中）的距离。<br>offsetTop：元素的上外边框距离定位元素（保存在offsetParent属性中）的距离。</p>
+<p>offsetParent属性的值:<br>（规律适用范围：table和内嵌框架布局页面除外的简单css布局页面）<br>1.如果有已定位（position属性不为static）的父元素，offsetParent属性的值是经过定位的这个父元素。<br>2.如果没有已定位的父元素，且元素自身position属性不为fixed,offsetParent属性的值是body。<br>3.如果元素本身使用了fixed进行定位，offsetParent属性值为null,这是因为fixed是相对视口定位，无定位父元素（但在Firefox中返回body）。<br><a id="more"></a></p>
+<h3 id="客户区大小（client-dimension）"><a href="#客户区大小（client-dimension）" class="headerlink" title="客户区大小（client dimension）"></a>客户区大小（client dimension）</h3><p>客户区大小指的是元素内容及其内边距所占用的空间大小，不包括滚动条。只读。<br>clientHeight:元素内容区高度加上下内边距的高度。<br>clientWidth:元素内容区宽度加左右内边距的宽度。<br>clinetLeft:元素左边框宽度。<br>clientTop:元素上边框高度。</p>
+<p>确定浏览器视口/网页可视区域大小的方法：<br>运行在标准模式下的IE6+、Chrome、Opera、Firefox、Safari,以及运行在混杂模式下的Chorme和Safari:<br>document.documentElement.clientHeight:浏览器视口高度。<br>document.documentElement.clientWidth:浏览器视口宽度。<br>运行在混杂模式中的IE6+、Chrome、Safari、Firefox、Safari：<br>docuemnt.body.clientHeight:浏览器视口高度。<br>docuemnt.body.clientWidth:浏览器视口宽度。</p>
+<p>兼容方法：检查document.compatMode属性，判断页面是否处于标准模式，标准模式使用document.documentELement,混杂模式或document.compatMode属性不存在则使用document.body。</p>
+<h3 id="滚动大小（scroll-dimension"><a href="#滚动大小（scroll-dimension" class="headerlink" title="滚动大小（scroll dimension)"></a>滚动大小（scroll dimension)</h3><p>滚动大小指的是包含滚动内容的元素的大小,除了一些元素（如html元素）以外，另外一些元素都需要通过CSS的overflow属性进行设置才能滚动。<br>scrollHeight:在没有滚动条的情况下，元素内容的总高度。<br>scrollWidth:在没有滚动条的情况下，元素内容的总宽度。<br>scrollLeft:被隐藏在内容区域左侧的像素数，通过设置这个属性可以改变元素的滚动位置。<br>scrollTop:被隐藏在内容区域上方的像素数，通过设置这个属性可以改变元素的滚动位置。</p>
+<p>确定文档总高度时，必须取得scrollWidth/clientWidth和scrollHeight/clientHeight中的最大值，才能保证在跨浏览器环境下得到精确结果。对于大多数浏览器，使用document.documentElement。对于运行在混杂模式下的IE，需要使用document.body代替document.documentElement。</p>
+
+      
+    </div>
+
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/11/关于获取元素尺寸和和位置属性的总结/" data-id="cj2kjb2770000kizsrexcv632" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/12/TCP的三次握手和四次挥手/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          TCP的三次握手和四次挥手
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/08/DNS解析过程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DNS解析过程简述</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器知识学习/">浏览器知识学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JavaScript学习/" style="font-size: 20px;">JavaScript学习</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/tags/浏览器知识学习/" style="font-size: 10px;">浏览器知识学习</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/12/TCP的三次握手和四次挥手/">TCP的三次握手和四次挥手</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/11/关于获取元素尺寸和和位置属性的总结/">关于获取元素尺寸和位置属性的总结</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/08/DNS解析过程/">DNS解析过程简述</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/08/this的指向详解/">JS中this对象指向总结</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/28/制作下拉菜单Tips/">制作下拉菜单Tips&amp;相关知识点复习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Iciqian<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

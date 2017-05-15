@@ -69,6 +69,107 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-TCP的三次握手和四次挥手" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/12/TCP的三次握手和四次挥手/" class="article-date">
+  <time datetime="2017-05-12T14:49:17.000Z" itemprop="datePublished">2017-05-12</time>
+</a>
+    
+  </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/12/TCP的三次握手和四次挥手/">TCP的三次握手和四次挥手</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="TCP报文格式："><a href="#TCP报文格式：" class="headerlink" title="TCP报文格式："></a>TCP报文格式：</h3><p><img src="https://pic4.zhimg.com/v2-c6d70b9f08ae74a2cde80cb6f3eb849b_r.png" alt=""></p>
+<h3 id="TCP连接建立："><a href="#TCP连接建立：" class="headerlink" title="TCP连接建立："></a>TCP连接建立：</h3><p>第一次握手：首先，客户端向服务端发送连接请求SYN报文。标志位SYN置为1，序号(随机)为j，即SYN=1 seq=j 。客户端进入SYN_SENT状态。</p>
+<p>第二次握手：服务器接收到SYN报文后，发送SYN+ACK报文。将标志位的SYN和ACK都置为1，并将序号置为k，确认号置为j+1。即 SYN=1 ACK=1 seq=k ack=j+1 。服务器进入SYN_RECV状态。</p>
+<p>第三次握手：客户端接收到SYN+ACK报文后，检查ACK与ack。检查无误，向服务器发送ACK报文，将标志位ACK置为1，确认号为k+1，即 ACK=1 ack=k+1。服务器接收到后，检查ACK与ack。检查无误，客户端和服务器进入ESTABLISHED状态，完成三次握手，建立TCP连接，开始传输数据。</p>
+<p>为什么三次握手？<br>1.建立稳定的连接，双方都能向对方发送报文，也能确认对方能收自己的报文。<br>2.防止错误响应已失效的连接请求报文段。</p>
+<p>简略版：<br>客户端：让我们建立连接吧！服务端！<br>服务端：好的客户端我收到了你发送的信息！让我们建立连接吧！<br>客户端：知道了服务端，我也能收到你发送的信息！</p>
+<h3 id="TCP连接中断"><a href="#TCP连接中断" class="headerlink" title="TCP连接中断"></a>TCP连接中断</h3><p>第一次挥手：客户端发起中断连接请求，发送FIN报文：将标志位FIN置为1，序号置为u。此时客户端进入FIN_WAIT_1状态，表示没有数据要传输给服务端了。<br>第二次挥手：服务端收到FIN报文后，发送ACK报文，表示同意关闭请求：标志位ACK置为1，确认序号为u+1。此时服务端进入CLOSE_WAIT状态，客户端接受到ACK报文后，进入FIN_WAIT_2状态。<br>第三次挥手：服务端再发送一个FIN报文，请求关闭连接：标志位FIN置为1，序号为w。服务端进入LAST_ACK状态，表示没有数据要传输给客户端了。<br>第四次挥手：客户端收到FIN报文后，发送一个ACK报文，确认序号为w+1，此时客户端进入TIME_WAIT状态。服务端收到ACK报文后，进入CLOSED状态。此时客户端会等待2MSL，如果没有收到回复，证明服务端已经关闭了连接，那么客户端也会关闭连接。至此，四次挥手完成，TCP连接断开。</p>
+<p>简略版：<br>客户端：我要请求关闭连接！我没有数据要传输给你了！<br>服务端：好的我知道了！诶你等等，我看看还有没有数据没传输完！<br>服务端：关闭连接吧！客户端！<br>客户端：好的我知道了！你先关吧！<br>客户端等了2MLS后，并没有受到服务器的回复，得知服务端已经关闭了连接，于是自己也关闭了。</p>
+
+      
+    </div>
+
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/12/TCP的三次握手和四次挥手/" data-id="cj2pqsuk40000mfzssipftst0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+</article>
+
+
+  
+    <article id="post-关于获取元素尺寸和和位置属性的总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/11/关于获取元素尺寸和和位置属性的总结/" class="article-date">
+  <time datetime="2017-05-11T13:05:56.000Z" itemprop="datePublished">2017-05-11</time>
+</a>
+    
+  </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/11/关于获取元素尺寸和和位置属性的总结/">关于获取元素尺寸和位置属性的总结</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>正在写一个飞机大战的小游戏，编写过程中发现一个小问题：当获取隐藏元素尺寸时，offsetWidth与offsetHeight属性无效。研究一番，发现原来是由于这两个属性是元素通过css渲染到页面上时才计算的，而display:none的隐藏元素不参与渲染，因此无法获取尺寸。解决方法很简单，使用height:0px来隐藏元素即可。<br>趁此机会，总结一下几个易混淆的用于获取元素尺寸和位置的属性。</p>
+<h3 id="偏移量（offset-dimension）"><a href="#偏移量（offset-dimension）" class="headerlink" title="偏移量（offset dimension）"></a>偏移量（offset dimension）</h3><p>偏移量包括元素在屏幕上占用的所有可见空间，包括所有内边距、滚动条和边框大小。只读。<br>offsetHeight:元素在垂直方向占用空间大小。包括元素内容区高度、上下内边距高度、（可见）水平滚动条高度和上下边框高度。<br>offsetWidth:元素在水平方向占用空间大小。包括元素区宽度、左右内边距宽度、（可见）垂直滚动条的宽度和左右边框的宽度。<br>offsetLeft:元素的左外边框距离定位父元素（保存在offsetParent属性中）的距离。<br>offsetTop：元素的上外边框距离定位元素（保存在offsetParent属性中）的距离。</p>
+<p>offsetParent属性的值:<br>（规律适用范围：table和内嵌框架布局页面除外的简单css布局页面）<br>1.如果有已定位（position属性不为static）的父元素，offsetParent属性的值是经过定位的这个父元素。<br>2.如果没有已定位的父元素，且元素自身position属性不为fixed,offsetParent属性的值是body。<br>3.如果元素本身使用了fixed进行定位，offsetParent属性值为null,这是因为fixed是相对视口定位，无定位父元素（但在Firefox中返回body）。<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/05/11/关于获取元素尺寸和和位置属性的总结/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/11/关于获取元素尺寸和和位置属性的总结/" data-id="cj2kjb2770000kizsrexcv632" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+</article>
+
+
+  
     <article id="post-DNS解析过程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/05/08/DNS解析过程/" class="article-date">
@@ -80,17 +181,31 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/DNS解析过程/">DNS解析过程简述</a>
+    </h1>
+  
+
+      </header>
+    
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>从输入网址到网页呈现，第一步就是通过DNS将该地址解析成IP地址。</p>
+<p>1.首先，浏览器会查询缓存中是否有与该域名对应的IP地址，如果有，解析结束。<br>2.如果在浏览器缓存中查找不到，浏览器会查询操作系统缓存是否有与该域名对应的IP地址，如果有，解析结束。<br>3.如果在操作系统缓存中也查找不到，浏览器向本地DNS服务器发起解析请求，解析程序把待解析的域名放在DNS请求报文中，以UDP用户数据的方式发给本地DNS服务器，进行递归查询。<br>4.本地DNS服务器收到请求后，先查询本地缓存，如果查找到与该域名对应的IP地址，直接将查询结果返回。<br>5.如果本地DNS服务器中没有对应的记录，本地DNS服务器便会发起迭代查询，首先查询根域名服务器。<br>6.根域名服务器返回给本地DNS服务器包含下一级域名的DNS服务器的IP地址，本地DNS服务器根据这个IP地址访问下一级DNS服务器，再得到下一级域名的信息的DNS服务器地址。<br>7.按上述方法迭代查询。直到在含有目标域名的DNS服务器上找到相对应的IP地址。<br>8.本地DNS服务器缓存域名与IP地址的对应关系（缓存时间由TTL值控制），并将查询结果返回浏览器。<br>9.浏览器根据IP地址访问目标主机，并将域名与IP地址的对应关系保存在缓存中（缓存时间由TTL值控制）。</p>
+
       
     </div>
 
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/08/DNS解析过程/" data-id="cj2fr4dhx0000tszsi2prwegv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/08/DNS解析过程/" data-id="cj2j2qo9b0000npzsscfcem39" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器知识学习/">浏览器知识学习</a></li></ul>
+
     </footer>
 
   </div>
@@ -138,55 +253,7 @@
     </div>
 
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/08/this的指向详解/" data-id="cj2fr4dih0003tszsh0qggrh0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-</article>
-
-
-  
-    <article id="post-js闭包" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/28/js闭包/" class="article-date">
-  <time datetime="2017-02-28T13:11:08.000Z" itemprop="datePublished">2017-02-28</time>
-</a>
-    
-  </div>
-  
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/js闭包/">JS闭包及应用</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>定义：闭包是有权访问另一函数作用域的变量的函数。<br>常见创建闭包的方式：在一个函数内部创建另一个函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">str</span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> hello = <span class="string">"hello"</span>;</div><div class="line"> <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(hello+str);</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2017/02/28/js闭包/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/28/js闭包/" data-id="cj2fr4did0001tszsn346p25h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/08/this的指向详解/" data-id="cj2j2qo9s0005npzshhgndlah" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li></ul>
@@ -235,57 +302,11 @@
     </div>
 
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/28/制作下拉菜单Tips/" data-id="cj2fr4din0005tszsmb4td5tc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/28/制作下拉菜单Tips/" data-id="cj2j2qo9g0001npzspza8lecs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
 
-    </footer>
-
-  </div>
-
-  
-</article>
-
-
-  
-    <article id="post-面向对象的程序设计（1）" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/28/面向对象的程序设计（1）/" class="article-date">
-  <time datetime="2017-02-28T13:11:08.000Z" itemprop="datePublished">2017-02-28</time>
-</a>
-    
-  </div>
-  
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/面向对象的程序设计（1）/">面向对象的程序设计——创建对象</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>定义:hahahahhahahhahahhahahahahahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh<br>
-        
-          <p class="article-more-link">
-            <a href="/2017/02/28/面向对象的程序设计（1）/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/28/面向对象的程序设计（1）/" data-id="cj2fr4dio0006tszssfd9x0rf" class="article-share-link">Share</a>
-      
-      
     </footer>
 
   </div>
@@ -311,7 +332,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript学习/">JavaScript学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器知识学习/">浏览器知识学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
     </div>
   </div>
 
@@ -321,7 +342,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JavaScript学习/" style="font-size: 20px;">JavaScript学习</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a>
+      <a href="/tags/JavaScript学习/" style="font-size: 20px;">JavaScript学习</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/tags/浏览器知识学习/" style="font-size: 10px;">浏览器知识学习</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a>
     </div>
   </div>
 
@@ -343,7 +364,15 @@
       <ul>
         
           <li>
-            <a href="/2017/05/08/DNS解析过程/">(no title)</a>
+            <a href="/2017/05/12/TCP的三次握手和四次挥手/">TCP的三次握手和四次挥手</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/11/关于获取元素尺寸和和位置属性的总结/">关于获取元素尺寸和位置属性的总结</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/08/DNS解析过程/">DNS解析过程简述</a>
           </li>
         
           <li>
@@ -351,15 +380,7 @@
           </li>
         
           <li>
-            <a href="/2017/02/28/js闭包/">JS闭包及应用</a>
-          </li>
-        
-          <li>
             <a href="/2017/02/28/制作下拉菜单Tips/">制作下拉菜单Tips&amp;相关知识点复习</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/28/面向对象的程序设计（1）/">面向对象的程序设计——创建对象</a>
           </li>
         
       </ul>
